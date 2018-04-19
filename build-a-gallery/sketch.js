@@ -34,6 +34,8 @@ function setup() {
   // grab a reference to our marker in the HTML document
   fMarker1 = world.getMarker("f1");
   fMarker2 = world.getMarker("f2");
+  fMarker3 = world.getMarker("f3");
+  fMarker4 = world.getMarker("f4");
 
   // put a painting on top of each marker
   var painting1 = new Plane({
