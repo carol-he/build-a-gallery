@@ -20,7 +20,7 @@
         <?php
 
           // REPLACE THIS FILE PATH WITH THE ACTUAL FILE PATH ON YOUR MACHINE
-          $everything = scandir('/Users/carolhe/nyu/junior/Interactive Computing/MAMP/UploadImages/images');
+          $everything = scandir('/Users/carolhe/nyu/junior/Interactive Computing/MAMP/build-a-gallery/build-a-gallery/images');
           for ($i = 0; $i < sizeof($everything); $i++) {
             if ($everything[$i] !== '.' && $everything[$i] !== '..') {
               print "'" . $everything[$i] . "'";
@@ -33,6 +33,7 @@
         ?>
 
       ];
+      var markers = [];
 
     </script>
 
@@ -95,10 +96,26 @@
 
 			<!-- set up graphics we want to use as assets, same as in A-Frame VR-->
 			<a-assets>
-        <img src="artworks/gris.jpg" id="gris">
-        <img src="artworks/braques.jpg" id="braques">
-        <img src="artworks/delaunay.jpg" id="delaunay">
-        <img src="artworks/picasso.jpg" id="picasso">
+        
+
+        <?php
+
+          // REPLACE THIS FILE PATH WITH THE ACTUAL FILE PATH ON YOUR MACHINE
+          $everything = scandir('/Users/carolhe/nyu/junior/Interactive Computing/MAMP/build-a-gallery/build-a-gallery/images');
+          for ($i = 0; $i < sizeof($everything); $i++) {
+            if ($everything[$i] !== '.' && $everything[$i] !== '..') {
+              print '<img src="images/' . $everything[$i] . '" id="' . $everything[$i] . '">';
+            }
+          }
+
+        ?>
+        
+        <!--
+        <img src="images/gris.jpg" id="gris">
+        <img src="images/braques.jpg" id="braques">
+        <img src="images/delaunay.jpg" id="delaunay">
+        <img src="images/picasso.jpg" id="picasso">
+        -->
 			</a-assets>
 
 			<!-- set up all of the AR markers we will be working with along with links to their 'pattern' files -->

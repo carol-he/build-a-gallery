@@ -3,7 +3,7 @@
 var world;
 
 // references to our markers (which are defined in the HTML document)
-var marker1, marker2, marker3, marker4;
+var markers = [];
 
 // how long has each marker been visible?
 var fCount1 = 0;
@@ -12,6 +12,7 @@ var fCount3 = 0;
 var fCount4 = 0;
 
 var p5Images = [];
+var artworks = [];
 
 // global flag to keep track of whether we should track new markers
 // (we can pause this when the user wants to interact with the content)
@@ -35,20 +36,20 @@ function preload() {
 
   console.log(p5Images);
   
-  grisImg = loadImage('artworks/gris.jpg');
-  braquesImg = loadImage('artworks/braques.jpg');
-  delaunayImg = loadImage('artworks/delaunay.jpg');
-  picassoImg = loadImage('artworks/picasso.jpg');
+  grisImg = loadImage('images/gris.jpg');
+  braquesImg = loadImage('images/braques.jpg');
+  delaunayImg = loadImage('images/delaunay.jpg');
+  picassoImg = loadImage('images/picasso.jpg');
 }
 
 function setup() {
   world = new World("ARScene");
 
   // grab a reference to our marker in the HTML document
-  marker1 = world.getMarker("f1");
-  marker2 = world.getMarker("f2");
-  marker3 = world.getMarker("f3");
-  marker4 = world.getMarker("f4");
+  markers.push(world.getMarker("f1"));
+  markers.push(world.getMarker("f2"));
+  markers.push(world.getMarker("f3"));
+  markers.push(world.getMarker("f4"));
   
   class Artwork {
     constructor(name, asset, img, marker){
@@ -64,10 +65,14 @@ function setup() {
     }
   }
   
-  artwork1 = new Artwork({name: gris, asset: 'gris', img: grisImg, marker: marker1});
-  artwork2 = new Artwork({name: braques, asset: 'braques', img: braquesImg, marker: marker2});
-  artwork3 = new Artwork({name: delaunay, asset: 'delaunay', img: delaunayImg, marker: marker3});
-  artwork4 = new Artwork({name: picasso, asset: 'picasso', img: picassoImg, marker: marker4});
+  for (var i = 0; i < 4; i++) {
+    artworks.push(new Artwork({name: allImages[i], asset: allImages[i], img: p5Images[i], marker: markers[i]}));
+  }
+  
+//  artwork1 = new Artwork({name: gris, asset: 'gris', img: grisImg, marker: marker1});
+//  artwork2 = new Artwork({name: braques, asset: 'braques', img: braquesImg, marker: marker2});
+//  artwork3 = new Artwork({name: delaunay, asset: 'delaunay', img: delaunayImg, marker: marker3});
+//  artwork4 = new Artwork({name: picasso, asset: 'picasso', img: picassoImg, marker: marker4});
 
   // create our overlay canvas (double the size as the regular canvas, which is 800x600)
   // this is because the canvas has to be scaled up to accomodate the AR video stream
@@ -88,6 +93,12 @@ function getMeasurements(img){
 }
 
 function draw() {
+  
+  image(p5Images[0], width/2, height/2, 50, 50);
+  for (var i = 0; i < p5Images.length; i++) {
+    
+  }
+  
   // if we are in tracking mode we really don't need to do anything here
   if (tracking) {
 
@@ -111,7 +122,6 @@ function draw() {
       scalingFactor = desiredMax/currentPainting.width;
     }
     
-
     // draw our painting
     imageMode(CENTER);
     image(currentPainting, width/2, height/2, currentPainting.width*scalingFactor, currentPainting.height*scalingFactor);
@@ -148,21 +158,21 @@ function mousePressed() {
   // are we currently in tracking mode?
   if (tracking) {
     // see which marker is currently visible
-    if (marker1.isVisible()) {
+    if (markers[0].isVisible()) {
       tracking = false;
-      currentPainting = grisImg;
+      currentPainting = p5Images[1];
     }
-    else if (marker2.isVisible()) {
+    else if (markers[1].isVisible()) {
       tracking = false;
-      currentPainting = braquesImg;
+      currentPainting = p5Images[2];
     }
-    else if (marker3.isVisible()) {
+    else if (markers[2].isVisible()) {
       tracking = false;
-      currentPainting = delaunayImg;
+      currentPainting = p5Images[3];
     }
-    else if (marker4.isVisible()) {
+    else if (markers[3].isVisible()) {
       tracking = false;
-      currentPainting = picassoImg;
+      currentPainting = p5Images[4];
     }
   }
 }
