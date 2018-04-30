@@ -13,6 +13,28 @@
 
 		<!-- Craig's AFrameP5 AR library -->
 		<script language="javascript" type="text/javascript" src="../libraries/aframep5_ar.js"></script>
+    
+    <script type="text/javascript">
+      // define all of our currently uploaded images into an array called 'allImages';
+      var allImages = [
+        <?php
+
+          // REPLACE THIS FILE PATH WITH THE ACTUAL FILE PATH ON YOUR MACHINE
+          $everything = scandir('/Users/carolhe/nyu/junior/Interactive Computing/MAMP/UploadImages/images');
+          for ($i = 0; $i < sizeof($everything); $i++) {
+            if ($everything[$i] !== '.' && $everything[$i] !== '..') {
+              print "'" . $everything[$i] . "'";
+              if ($i < sizeof($everything)-1) {
+                print ', ';
+              }
+            }
+          }
+
+        ?>
+
+      ];
+
+    </script>
 
 		<!-- P5 Sketch -->
 		<script language="javascript" type="text/javascript" src="sketch.js"></script>
