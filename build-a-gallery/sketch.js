@@ -11,6 +11,8 @@ var fCount2 = 0;
 var fCount3 = 0;
 var fCount4 = 0;
 
+var p5Images = [];
+
 // global flag to keep track of whether we should track new markers
 // (we can pause this when the user wants to interact with the content)
 var tracking = true;
@@ -25,6 +27,14 @@ var gris, braques, delaunay, picasso;
 var overlayCanvas;
 
 function preload() {
+  
+  // reference the global 'allImages' array to load in all of our Images
+  for (var i = 0; i < allImages.length; i++) {
+    p5Images.push( loadImage('images/' + allImages[i]) );
+  }
+
+  console.log(p5Images);
+  
   grisImg = loadImage('artworks/gris.jpg');
   braquesImg = loadImage('artworks/braques.jpg');
   delaunayImg = loadImage('artworks/delaunay.jpg');
