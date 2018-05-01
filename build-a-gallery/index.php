@@ -13,14 +13,15 @@
 
 		<!-- Craig's AFrameP5 AR library -->
 		<script language="javascript" type="text/javascript" src="../libraries/aframep5_ar.js"></script>
-    
+
     <script type="text/javascript">
       // define all of our currently uploaded images into an array called 'allImages';
       var allImages = [
         <?php
+					// pull in the PHP variable that defines your path (see config.php)
+					include('config.php');
 
-          // REPLACE THIS FILE PATH WITH THE ACTUAL FILE PATH ON YOUR MACHINE
-          $everything = scandir('/Users/carolhe/nyu/junior/Interactive Computing/MAMP/build-a-gallery/build-a-gallery/images');
+          $everything = scandir($path);
           for ($i = 0; $i < sizeof($everything); $i++) {
             if ($everything[$i] !== '.' && $everything[$i] !== '..') {
               print "'" . $everything[$i] . "'";
@@ -70,7 +71,7 @@
 			}
 
 			.content {
-				background-color: white;
+				background-color:none;
 				position: absolute;
 				top: 0px;
 				left: 0px;
@@ -79,6 +80,27 @@
 				padding: 25px;
 				font-family: sans-serif;
 				line-height: 150%;
+			}
+
+			#imagecontainer {
+				background-color:rgba(255,255,255,0.5);
+				position: fixed;
+				bottom: 0px;
+				left: 0px;
+				width: 100%;
+				z-index: 1100;
+				padding: 15px;
+				font-family: sans-serif;
+				line-height: 150%;
+				overflow:auto;
+				display:inline-block;
+				white-space:nowrap;
+				height: 100px;
+			}
+
+			#imagecontainer img {
+				height: 100px;
+				padding-right: 5px;
 			}
 		</style>
 
@@ -96,12 +118,10 @@
 
 			<!-- set up graphics we want to use as assets, same as in A-Frame VR-->
 			<a-assets>
-        
+
 
         <?php
 
-          // REPLACE THIS FILE PATH WITH THE ACTUAL FILE PATH ON YOUR MACHINE
-          $everything = scandir('/Users/carolhe/nyu/junior/Interactive Computing/MAMP/build-a-gallery/build-a-gallery/images');
           for ($i = 0; $i < sizeof($everything); $i++) {
             if ($everything[$i] !== '.' && $everything[$i] !== '..') {
               print '<img src="images/' . $everything[$i] . '" id="' . $everything[$i] . '">';
@@ -109,7 +129,7 @@
           }
 
         ?>
-        
+
         <!--
         <img src="images/gris.jpg" id="gris">
         <img src="images/braques.jpg" id="braques">
@@ -122,10 +142,25 @@
 			<a-marker id="f1" preset="custom" url="../markers/fiducial1.pat"></a-marker>
 			<a-marker id="f2" preset="custom" url="../markers/fiducial2.pat"></a-marker>
 			<a-marker id="f3" preset="custom" url="../markers/fiducial3.pat"></a-marker>
-			<a-marker id="f4" preset="custom" url="../markers/fiducial4.pat"></a-marker>			
+			<a-marker id="f4" preset="custom" url="../markers/fiducial4.pat"></a-marker>
 
 			<a-entity camera></a-entity>
 		</a-scene>
+
+
+
+		<div id="imagecontainer">
+			<?php
+
+				for ($i = 0; $i < sizeof($everything); $i++) {
+					if ($everything[$i] !== '.' && $everything[$i] !== '..') {
+						print '<img src="images/' . $everything[$i] . '" id="' . $everything[$i] . '" data-id="' . $everything[$i] . '">' . "\n";
+					}
+				}
+
+			?>
+
+		</div>
 
 	</body>
 </html>

@@ -32,9 +32,11 @@
 
       <hr>
 
-      <p>
-        <a href="../index.html">Proceed to image assignment</a>
-      </p>
+        <a href="../index.php">Proceed to image assignment</a>
+      </br>
+      </br>
+        <a href="../../index.php">Back</a>
+
     </div>
 
   </body>

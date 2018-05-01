@@ -23,10 +23,9 @@
       if ($extension !== 'unknown') {
         $t = time();
 
-        // YOU WILL NEED TO UPDATE THIS PATH TO REFLECT THE FULL FILE PATH OF YOUR IMAGES FOLDER
-        $images_path = '/Users/carolhe/nyu/junior/Interactive Computing/MAMP/build-a-gallery/build-a-gallery/images';
+        include('../config.php');
 
-        move_uploaded_file($file['tmp_name'], $images_path.'/'.$_SESSION['username'].'/'.$t.'.'.$extension);
+        move_uploaded_file($file['tmp_name'], $path.'/'.$t.'.'.$extension);
         header ('Location: index.php?confirmation=success');
       }
       else {
