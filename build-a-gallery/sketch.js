@@ -43,7 +43,6 @@ function setup() {
       // if a marker is visible then it should be assigned this image
       if (markerReference) {
         console.log("assigning: " + event.currentTarget.dataset.id + " to marker");
-
         // remove any existing artwork from this marker
         while (markerReference.children.length > 0) {
           markerReference.removeChild( markerReference.children[0] );

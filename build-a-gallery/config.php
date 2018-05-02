@@ -1,4 +1,4 @@
 <?php
   // THE FILE PATH OF YOUR IMAGES FOLDER
-  $path = '/Users/KatV/Documents/interactive/build-a-gallery-master/build-a-gallery/images';
+  $path = '/Users/carolhe/nyu/junior/Interactive Computing/MAMP/build-a-gallery/build-a-gallery/images';
 ?>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Upload Images</title>
     <link rel="stylesheet" type="text/css" href="../../styles/upload.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
   </head>
   <body>
 
@@ -21,22 +21,18 @@
       }
 
     ?>
+    
+      <h1>UPLOAD IMAGES</h1>
     <div id="upload">
-      <h1>Upload A New Image</h1>
-
       <form method="post" action="upload.php" enctype="multipart/form-data">
+        please choose images you would like to use in the gallery simulator.<br><br><br>
         <input type="file" name="file" id="file">
         <input type="submit" value="Upload Image">
       </form>
-
-
-      <hr>
-
-        <a href="../index.php">Proceed to image assignment</a>
-      </br>
-      </br>
-        <a href="../../index.php">Back</a>
-
+      <div id="buttonBox">
+        <a href="../index.php" class="right"><div id="rightButton">Proceed to image assignment</div></a>
+        <a href="../../index.php" class="left"><div id="leftButton">Back</div></a>
+      </div>
     </div>
 
   </body>
