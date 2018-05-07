@@ -1,0 +1,14 @@
+body{
+  margin: auto;
+  text-align: center;
+}
+h1 {
+  font-family: helvetica;
+}
+h4 {
+  font-family: helvetica;
+}
+p {
+  font-family: helvetica;
+  padding: 20px 50px;
+}
